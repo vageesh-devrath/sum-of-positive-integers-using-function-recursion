@@ -1,4 +1,3 @@
-
     #include <stdio.h>
     int f(int n);
     int main()
