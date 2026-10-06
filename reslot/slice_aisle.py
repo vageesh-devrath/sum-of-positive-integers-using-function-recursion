@@ -36,19 +36,25 @@ cat=cat.rename(columns={'category':'Unit (Category / Subcategory)','Moves_In':'M
 
 # rack layout with slot fill
 bk=bd[(bd.aisle==A)&(bd.cls!='OVERHEAD')]
-slots=bk.groupby('label').lim.sum(); used=tin.drop_duplicates('sku_id').groupby('To Rack').size()
+bka=bd[bd.aisle==A]
+slots=bk.groupby('label').lim.sum(); capv=bka.groupby('label').binvol.sum()
+tin=tin.assign(v=tin.live_inv_qty*tin.sku_vol_cc)
+used=tin.drop_duplicates(['sku_id','To Bin']).groupby('To Rack').size(); nsku=tin.groupby('To Rack').sku_id.nunique()
+uv=tin.groupby('To Rack').v.sum()
 ra=racks[['label','domtier','category','zone']].copy()
-ra['Slots']=ra.label.map(slots).fillna(0).astype(int); ra['SKUs After']=ra.label.map(used).fillna(0).astype(int)
-ra['Fill %']=(ra['SKUs After']/ra.Slots.where(ra.Slots>0)*100).round(0).fillna(0).astype(int)
-ra.columns=['Rack','Bin Tier','Category','Zone','Slots','SKUs After','Fill %']
+ra['Slots']=ra.label.map(slots).fillna(0).astype(int); ra['SKUs After']=ra.label.map(nsku).fillna(0).astype(int)
+ra['Slot Fill %']=(ra.label.map(used).fillna(0)/ra.Slots.where(ra.Slots>0)*100).round(0).fillna(0).astype(int)
+ra['Stock Vol L']=(ra.label.map(uv).fillna(0)/1000).round(0).astype(int)
+ra['Vol Fill % (excl. overhead)']=(ra.label.map(tin[tin['To Bin Class']!='OVERHEAD'].groupby('To Rack').v.sum()).fillna(0)/ra.label.map(bk.groupby('label').binvol.sum())*100).round(0).fillna(0).astype(int)
+ra.columns=['Rack','Bin Tier','Category','Zone','Slots','SKUs After','Slot Fill %','Stock Vol L','Vol Fill % (excl. overhead)']
 
-flow=sl.groupby('Flow').agg(Rows=('sku_id','size'),SKUs=('sku_id','nunique')).reset_index()
+flow=sl.groupby('Flow').agg(Rows=('sku_id','size'),SKUs=('sku_id','nunique'),Units=('live_inv_qty','sum')).reset_index()
 outd=sl[sl.Flow=='Out of aisle'].assign(Dest=lambda d:d['To Rack'].str.split('-').str[0]).groupby(['Dest','To Category']).size().reset_index(name='Moves').sort_values('Moves',ascending=False)
 outd.columns=['To Aisle','To Category','Moves']
 
 mv=sl.rename(columns={'sku_id':'SKU ID','product_name':'SKU Name','category_name':'Old Category','To Category':'New Category',
-  'sku_vol_cc':'SKU Vol cc','size':'Size','bin_code':'From Bin','live_inv_qty':'Qty'})
-mv=mv[['Flow','SKU ID','SKU Name','Old Category','New Category','SKU Vol cc','Size','From Bin','From Rack','To Bin','To Rack','To Bin Class','Qty','Rule']]
+  'sku_vol_cc':'SKU Vol cc','size':'Size','bin_code':'From Bin','live_inv_qty':'Qty to Move'})
+mv=mv[['Flow','SKU ID','SKU Name','Old Category','New Category','SKU Vol cc','Size','From Bin','From Rack','To Bin','To Rack','To Bin Class','Qty to Move','Move Vol cc','Rule']]
 order={'Out of aisle':0,'Within aisle':1,'Into aisle':2,'Stays (no move)':3}
 mv=mv.sort_values(['Flow','To Rack','To Bin','SKU Name'],key=lambda s:s.map(order) if s.name=='Flow' else s)
 mv['SKU Vol cc']=mv['SKU Vol cc'].fillna(0).round(0).astype(int)
@@ -56,11 +62,19 @@ mv['SKU Vol cc']=mv['SKU Vol cc'].fillna(0).round(0).astype(int)
 # checks on the aisle
 lim=bd.set_index('binCode').lim.to_dict(); bv=bd.set_index('binCode').binvol.to_dict(); cls=bd.set_index('binCode').cls.to_dict()
 occ=tin.drop_duplicates(['sku_id','To Bin']).groupby('To Bin').size()
-chk=[('Comingle breaches in aisle bins',int(sum(c>lim.get(b,99) for b,c in occ.items()))),
-('Volume-fit breaches (excl. D_BAT long-handle)',int(((tin['To Bin'].map(bv)<tin.sku_vol_cc)&~tin.Rule.str.startswith('Long',na=False)).sum())),
-('Racks with >1 category',int((tin.groupby('To Rack')['To Category'].nunique()>1).sum())),
-('Liquid/beauty/Paan in overhead or reserve',int((tin.Rule.str.contains('Liquid|Paan|beauty',case=False,na=False)&tin['To Bin'].map(cls).isin(['OVERHEAD','RESERVE'])).sum())),
-('Food & non-food sharing a rack',int((tin.assign(z=tin['To Rack'].map(rt.set_index('label').zone)).groupby('To Rack').z.nunique()>1).sum()))]
+sk=pd.read_pickle(HERE/'sku.pkl').set_index('sku_id')
+FOODP=set(rt[rt.zone=='FOOD'].parent)
+occv=tin.groupby('To Bin').v.sum(); tcls=bd.set_index('binCode').binTypeCode.to_dict()
+par=tin.sku_id.map(sk.unit).str.split(' :: ').str[0]; rpar=tin['To Rack'].map(rt.set_index('label').parent)
+offcat=tin[(par!=rpar)&~tin['To Rack'].isin(rt[rt.category.str.startswith(('XL Pool','Long-handle'))].label)]
+restr=tin.sku_id.map(sk.liquid)|par.isin(['Premium Beauty','Paan Corner'])
+chk=[('Moves from/to outside floor 2 (Dry_2)',int((~sl.bin_code.isin(bd.binCode)).sum()+(~sl['To Bin'].isin(bd.binCode)).sum())),
+('Comingle breaches (distinct SKUs > bin limit)',int(sum(c>lim.get(b,99) for b,c in occ.items()))),
+('Bin volume breaches (qty x unit vol > btc_vol_cc, excl. D_BAT)',int(sum(v>bv[b]+1 for b,v in occv.items() if tcls.get(b)!='D_BAT_1'))),
+('Unit bigger than bin (excl. D_BAT)',int(((tin['To Bin'].map(bv)<tin.sku_vol_cc)&(tin['To Bin'].map(tcls)!='D_BAT_1')).sum())),
+('Liquid/beauty/Paan in overhead or reserve',int((restr&tin['To Bin'].map(cls).isin(['OVERHEAD','RESERVE'])).sum())),
+('Food SKU on non-food rack or vice versa',int((par.isin(FOODP)!=rpar.isin(FOODP)).sum())),
+('SKUs parked on another category rack (no space in own block)',int(offcat.sku_id.nunique()))]
 
 HDR=PatternFill('solid',fgColor='1F3864'); HF=Font(name='Arial',bold=True,color='FFFFFF',size=10)
 CF=Font(name='Arial',size=10); TF=Font(name='Arial',bold=True,size=13,color='1F3864'); H2=Font(name='Arial',bold=True,size=11,color='1F3864')
@@ -85,7 +99,7 @@ def sheet(name,df,title,widths):
 
 ws=wb.active; ws.title='Summary'; ws.sheet_view.showGridLines=False
 ws['A1']=f'Aisle {A} Pilot Re-slot — slice of the Floor 2 (Dry_2) plan'; ws['A1'].font=TF
-ws['A2']=f'{len(racks)} racks ({racks.label.iloc[0]} to {racks.label.iloc[-1]}) · {len(bd[bd.aisle==A])} bins · {int(slots.sum())} usable comingle slots'; ws['A2'].font=CF
+ws['A2']=f'Moves stay inside floor 2 (Dry_2) only · quantities in units · volume = qty x sku_vol_cc vs btc_vol_cc · {len(racks)} racks ({racks.label.iloc[0]} to {racks.label.iloc[-1]}) · {len(bd[bd.aisle==A])} bins · {int(slots.sum())} usable comingle slots'; ws['A2'].font=CF
 ws['A4']='Movement'; ws['A4'].font=H2; r=table(ws,flow,5)
 ws.cell(r,1,'Rule checks (aisle bins)').font=H2; r=table(ws,pd.DataFrame(chk,columns=['Check','Count']),r+1)
 ws.cell(r,1,f'Where SKUs leaving {A} go').font=H2; table(ws,outd,r+1)
@@ -94,12 +108,12 @@ ws.column_dimensions['A'].width=46; ws.column_dimensions['B'].width=30; ws.colum
 w2=sheet('Category Plan',cat[['Unit (Category / Subcategory)','Zone','Racks','From','To','SKUs','Moves In']],f'Aisle {A} — category / subcategory -> racks',
   {'A':44,'B':11,'C':7,'D':7,'E':7,'F':7,'G':9})
 for i in range(4,4+len(cat)): w2.cell(i,2).fill=FOODF if w2.cell(i,2).value=='FOOD' else NFOODF
-w3=sheet('Rack Layout',ra,f'Aisle {A} — rack -> category (single category per rack)',{'A':8,'B':9,'C':44,'D':11,'E':7,'F':10,'G':7})
+w3=sheet('Rack Layout',ra,f'Aisle {A} — rack -> category (single category per rack)',{'A':8,'B':9,'C':44,'D':11,'E':7,'F':10,'G':10,'H':10,'I':12})
 for i in range(4,4+len(ra)):
     f=FOODF if w3.cell(i,4).value=='FOOD' else NFOODF
-    for j in range(1,8): w3.cell(i,j).fill=f
+    for j in range(1,10): w3.cell(i,j).fill=f
 w4=sheet('Bin-to-Bin Moves',mv,f'Aisle {A} — every SKU-bin leaving, moving within, or entering the aisle',
-  {'A':15,'B':30,'C':42,'D':18,'E':24,'F':9,'G':7,'H':14,'I':8,'J':14,'K':8,'L':10,'M':6,'N':34})
+  {'A':15,'B':30,'C':42,'D':18,'E':24,'F':9,'G':7,'H':14,'I':8,'J':14,'K':8,'L':10,'M':9,'N':10,'O':40})
 for i in range(4,4+len(mv)): w4.cell(i,1).fill=PatternFill('solid',fgColor=FLOWF.get(w4.cell(i,1).value,'FFFFFF'))
 os.makedirs(os.path.dirname(os.path.abspath(a.out)),exist_ok=True); wb.save(a.out)
 print(ra.to_string(index=False)); print(flow.to_string(index=False)); print(chk); print('saved',a.out)

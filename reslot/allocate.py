@@ -7,10 +7,12 @@ FOOD={'Atta, Rice, Oil & Dals','Masala, Dry Fruits & More','Tea, Coffee & More',
 BEAUTY_CATS={'Makeup & Beauty','Skincare','Fragrances & Grooming'}
 
 # ---- category profile from REAL volume ----
+sk['tv']=sk.vol.fillna(0).clip(lower=0)*sk.qty.fillna(0).clip(lower=1)   # stock volume (cc)
 prof=sk[sk.catEff!=''].groupby('unit').agg(
     skus=('sku_id','nunique'),
     pLARGE=('size',lambda s:s.isin(['LARGE','XL']).mean()),
-    pSMALL=('size',lambda s:(s=='SMALL').mean())).reset_index()
+    pSMALL=('size',lambda s:(s=='SMALL').mean()),
+    tv=('tv','sum')).reset_index()
 prof=prof.rename(columns={'unit':'catEff'})
 prof['parent']=prof.catEff.str.split(' :: ').str[0]
 def ctier(r):
@@ -20,11 +22,13 @@ def ctier(r):
     if r.pSMALL>=0.70: return 'SMALL'
     return 'MED'
 prof['tier']=prof.apply(ctier,axis=1); prof['food']=prof.parent.isin(FOOD)
-prof['need']=np.ceil(prof.skus/0.80).astype(int)
+prof['need']=np.ceil(prof.skus/0.80).astype(int)          # comingle slots, 80% target
+prof['needv']=prof.tv/0.95                                   # stock volume, 95% of physical bin volume
 
 # ---- rack capacity (usable = non-overhead comingle slots) ----
 cap=bd[bd.cls!='OVERHEAD'].groupby('label').lim.sum()
-rt['cap']=rt.label.map(cap).fillna(0).astype(int)
+capv=bd[bd.cls!='OVERHEAD'].groupby('label').binvol.sum()
+rt['cap']=rt.label.map(cap).fillna(0).astype(int); rt['capv']=rt.label.map(capv).fillna(0)
 rt=rt.sort_values('seq').reset_index(drop=True)
 PIN_PAAN=['J-1','J-3']; PIN_BEAUTY=['L-14','L-16','L-18']
 BAT_BINS=set(bd[bd.binTypeCode=='D_BAT_1'].binCode)  # J-4/J-6 long-handle bins, reserved
@@ -34,28 +38,34 @@ free=rt[~rt.label.isin(PIN_PAAN+PIN_BEAUTY+XLR)].copy()
 racks=free.to_dict('records')
 
 # ---- placement: food first, tier-matched, MED/LARGE never on SMALL (D_140H) racks ----
-assign={}
 PREF={'LARGE':['LARGE','XL','MED','RESERVE'],'MED':['MED','LARGE','XL','RESERVE'],
       'SMALL':['SMALL','MED','LARGE','XL','RESERVE'],'XL':['XL','LARGE','MED','RESERVE']}
 prof['fo']=(~prof.food).astype(int)
 cats=prof[~prof.tier.isin(['BEAUTY','PIN'])].sort_values(['fo','parent','need'],ascending=[True,True,False])
-def grab(cat,need,pref):
-    got=sum(int(r['cap']) for r in racks if assign.get(r['label'])==cat)
-    for tr in pref:
-        if got>=need: break
-        for r in racks:
-            if r['label'] in assign or r['domtier']!=tr: continue
-            assign[r['label']]=cat; got+=int(r['cap'])
-            if got>=need: break
-    return got
-for _,c in cats.iterrows(): grab(c.catEff,c.need,PREF[c.tier])
-for _,c in cats.iterrows():          # fallback for any unmet
-    got=sum(int(r['cap']) for r in racks if assign.get(r['label'])==c.catEff)
-    if got>=c.need: continue
-    for r in racks:
-        if r['label'] in assign or r['domtier'] not in PREF[c.tier]: continue
-        assign[r['label']]=c.catEff; got+=int(r['cap'])
-        if got>=c.need: break
+def allocate(k):
+    """Give every unit racks covering k x its slot AND stock-volume need. Returns (assign, all units placed?)."""
+    assign={}
+    def grab(cat,need,needv,tiers):
+        got=sum(int(r['cap']) for r in racks if assign.get(r['label'])==cat)
+        gotv=sum(r['capv'] for r in racks if assign.get(r['label'])==cat)
+        for tr in tiers:
+            for r in racks:
+                if got>=need and gotv>=needv: return
+                if r['label'] in assign or r['domtier']!=tr: continue
+                assign[r['label']]=cat; got+=int(r['cap']); gotv+=r['capv']
+    for _,c in cats.iterrows(): grab(c.catEff,c.need*k,c.needv*k,PREF[c.tier])
+    for _,c in cats.iterrows(): grab(c.catEff,c.need*k,c.needv*k,PREF[c.tier])   # fallback for any unmet
+    return assign,set(cats.catEff)<=set(assign.values())
+# largest scale (<=1) at which every unit still gets at least one rack
+lo,hi=0.0,1.0
+if allocate(1.0)[1]: lo=1.0
+else:
+    for _ in range(20):
+        mid=(lo+hi)/2
+        if allocate(mid)[1]: lo=mid
+        else: hi=mid
+assign,_=allocate(lo)
+print('rack sizing scale (1.0 = full slot+volume need):',round(lo,3))
 # pins
 for l in PIN_PAAN: assign[l]='Paan Corner'
 for l in PIN_BEAUTY: assign[l]='Premium Beauty'
@@ -75,4 +85,7 @@ bad=[(r.label,r.category) for _,r in rt.iterrows() if r.domtier=='SMALL' and t.g
 print('MED/LARGE cats on SMALL(D_140H) racks:',bad)
 print('unplaced:',set(prof.catEff)-set(rt.category)-{'Premium Beauty','Paan Corner'}|({'Premium Beauty'}-set(rt.category)))
 print('spare racks:',(rt.category=='SPARE / GROWTH').sum())
+hv=rt.groupby('category')[['cap','capv']].sum(); pv=prof.set_index('catEff')
+short=[(c,int(pv.need[c]),int(hv.cap.get(c,0)),round(pv.tv[c]/max(hv.capv.get(c,1),1)*100)) for c in pv.index if c in hv.index and (hv.cap[c]<pv.need[c] or hv.capv[c]<pv.needv[c])]
+print('units short of slots/volume (unit, slots needed, slots, stock vol % of rack vol):',short)
 print('J-1/3:',[assign.get(x) for x in ['J-1','J-3']],'| J-9/11/13:',[assign.get(x) for x in ['J-9','J-11','J-13']])
