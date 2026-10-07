@@ -8,15 +8,16 @@ for l in batracks[batracks].index:
     rt.loc[rt.label==l,'category']='Long-handle Tools (D_BAT)'; rt.loc[rt.label==l,'zone']='NON-FOOD'
 rt.to_pickle('racks_assigned.pkl')
 seq=rt.set_index('label').seq.to_dict()
-inv['To Category']=inv['To Rack'].map(rt.set_index('label').category.to_dict()).fillna('-')
-# category/subcat plan
-cp=rt[rt.category!='SPARE / GROWTH'].groupby('category').agg(
-    Racks=('label','count'),From=('label',lambda s:sorted(s,key=lambda x:seq[x])[0]),
-    To=('label',lambda s:sorted(s,key=lambda x:seq[x])[-1]),Zone=('zone','first')).reset_index()
-skc=inv[inv['To Rack']!='-'].groupby('To Category').agg(SKUs=('sku_id','nunique'),Moves=('Move?',lambda s:(s=='Yes').sum())).reset_index()
-cp=cp.merge(skc,left_on='category',right_on='To Category',how='left').drop(columns='To Category')
+# category/subcat plan: one row per unit with its consecutive rack run (boundary racks can be shared)
+u2r={}
+for r_ in rt.sort_values('seq').itertuples():
+    for u in str(r_.category).split(' + '): u2r.setdefault(u,[]).append((r_.label,r_.zone))
+skc=inv[inv['To Rack']!='-'].groupby('To Category').agg(SKUs=('sku_id','nunique'),Moves=('Move?',lambda s:(s=='Yes').sum()))
+cp=pd.DataFrame([{'Unit (Category / Subcategory)':u,'Zone':v[0][1],'Racks':len(v),'From':v[0][0],'To':v[-1][0],
+    'Aisles':', '.join(dict.fromkeys(l.split('-')[0] for l,_ in v))} for u,v in u2r.items() if u not in ('SPARE / GROWTH','NOT USED (D_Cig)')])
+cp=cp.join(skc,on='Unit (Category / Subcategory)')
 cp['SKUs']=cp.SKUs.fillna(0).astype(int); cp['Moves']=cp.Moves.fillna(0).astype(int)
-cp=cp.rename(columns={'category':'Unit (Category / Subcategory)'})[['Unit (Category / Subcategory)','Zone','SKUs','Racks','From','To','Moves']].sort_values(['Zone','From'])
+cp=cp[['Unit (Category / Subcategory)','Zone','SKUs','Racks','From','To','Aisles','Moves']]
 cp.to_pickle('cp.pkl')
 # 8-person balanced contiguous split by destination rack
 m=inv[inv['To Rack']!='-'].copy(); m['seq']=m['To Rack'].map(seq)
@@ -65,13 +66,13 @@ def sheet(name,df,title,widths,center=()):
     ws.freeze_panes=f'A{hr+1}'; return ws,hr
 
 ws,hr=sheet('Category Plan',cp,'Floor 2 (Dry_2) Re-slot — volume-matched, food/non-food zoned',
-  {'A':24,'B':10,'C':8,'D':7,'E':7,'F':7,'G':16,'H':8},center=list(cp.columns[1:]))
+  {'A':44,'B':10,'C':8,'D':7,'E':7,'F':7,'G':9,'H':8},center=list(cp.columns[1:]))
 for r in range(hr+1,hr+1+len(cp)):
     ws.cell(r,2).fill=FOODF if ws.cell(r,2).value=='FOOD' else NFOODF
 
 ra=rt[['seq','label','domtier','category','zone']].copy(); ra.columns=['Seq','Aisle-Rack','Bin Tier','Category','Zone']
 ws,hr=sheet('Rack Layout',ra,'Floor 2 Rack -> Category (each rack single-category; food & non-food never share a rack)',
-  {'A':6,'B':12,'C':9,'D':24,'E':10},center=['Seq','Aisle-Rack','Bin Tier','Zone'])
+  {'A':6,'B':12,'C':9,'D':70,'E':10},center=['Seq','Aisle-Rack','Bin Tier','Zone'])
 for r in range(hr+1,hr+1+len(ra)):
     z=ws.cell(r,5).value; cat=ws.cell(r,4).value
     fill=FOODF if z=='FOOD' else (NFOODF if z=='NON-FOOD' else SPAREF)
@@ -108,19 +109,22 @@ nmoves=int((inv['Move?']=='Yes').sum()); mh=nmoves*15/3600
 leg=wb.create_sheet('Read Me'); leg.sheet_view.showGridLines=False
 N=[('Floor 2 (Dry_2) Consolidated Re-slot — volumetric','T'),('',''),
 ('Built from REAL volumetrics','H'),
+('Only stock that the WMS download shows in Good bins is planned (no consumables, promo or unlisted items). All moves are within floor 2.',''),
+('Bin fill = qty x sku_vol_cc summed over the SKUs in a bin, never above btc_vol_cc; comingle never above the bin limit.',''),
 ('Uses sku_vol_cc (actual per-unit SKU volume) vs btc_vol_cc (bin volume capacity) — no pack-size guessing.',''),
 ('Each SKU placed in a bin whose volume fits it: small SKUs -> D_140H/D_BEAUTY cells, medium -> D_300L/D_400D, large -> D_600D/D_LSS.',''),
 ('Bin volumes: D_BEAUTY 3,168cc | D_140H 6,337cc | D_300L ~20k | D_400D ~23-29k | D_600D ~34-43k | D_LSS 60,480cc | Deep(overhead) 1.44M cc.',''),
 ('',''),
 ('Hard rules (all verified)','H'),
-('Food and non-food never share a rack — every rack is single-category. Zone column marks each.',''),
+('Every category / dedicated subcategory lives in ONE consecutive run of racks and nowhere else on floor 2. Food and non-food never share a rack.',''),
+('Only the boundary rack between two neighbouring units of the same side (food / non-food) may be shared, so no half-empty tail racks.',''),
 ('No bin exceeds its comingle limit. 0 medium/large SKUs forced into D_140H small cells.',''),
 ('Entire Paan Corner (cigarettes + smoking accessories, HVP) -> J-1 & J-3 only; never overhead/reserve.',''),
 ('Premium beauty (Makeup, Skincare, Fragrances) -> D_BEAUTY panda racks L-14/16/18; never overhead/reserve.',''),
 ('Liquids -> never in overhead (space above rack) or deep-reserve (D_600D) bins.',''),
 ('D_BAT bins (J-4/J-6) -> long-handle articles only: mops, brooms, wipers, squeegees, floor scrubbers.',''),
 ('High-volume subcategories (>=150 SKUs) get dedicated racks within their category block.',''),
-('D_LSS rack N-5 = shared XL pool for oversized SKUs (big buckets, 5kg pet food, bulk mops) that exceed normal bin volume.',''),
+('Oversized SKUs stay inside their own category block (largest bins, then the overhead Deep bin of that block).',''),
 ('Deep (1/rack) = overhead space above rack = reserve only, used last for same-category bulky top-up.',''),
 ('',''),
 ('Movement','H'),

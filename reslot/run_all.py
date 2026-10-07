@@ -19,14 +19,19 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--bins', default='/mnt/user-data/uploads/BIN_DOWNLOAD_BIN_DOWNLOAD_2026-10-06T09-47-23_256706_6C6BD.csv')
     ap.add_argument('--inv',  default='/mnt/user-data/uploads/sqllab_untitled_query_134_20261006T094554.csv')
+    ap.add_argument('--wms',  default='', help='optional WMS INVENTORY_BY_SKU_BIN_LPN download; only stock in its Good bins is planned')
     ap.add_argument('--out',  default='/mnt/user-data/outputs/Floor2_Reslot_Volumetric.xlsx')
     a=ap.parse_args()
     # stages run with cwd=HERE, so resolve user paths against the caller's cwd first
     os.environ['RESLOT_BINS']=os.path.abspath(a.bins); os.environ['RESLOT_INV']=os.path.abspath(a.inv); os.environ['RESLOT_OUT']=os.path.abspath(a.out)
-    for stage in ['engine.py','allocate.py','pack.py','build.py']:
+    if a.wms: os.environ['RESLOT_WMS']=os.path.abspath(a.wms)
+    def run(stage):
         print(f'=== {stage} ===')
         r=subprocess.run([sys.executable, str(HERE/stage)], cwd=HERE)
         if r.returncode!=0: sys.exit(f'FAILED at {stage}')
+    run('engine.py')
+    run('allocate.py'); run('pack.py')
+    run('build.py')
     print('DONE ->', os.environ['RESLOT_OUT'])
 
 if __name__=='__main__': main()

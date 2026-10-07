@@ -39,7 +39,13 @@ rt.to_pickle('racks.pkl')
 
 # ---------- INVENTORY (map to Dry_2) ----------
 d2=set(bd.binCode)
-inv=i[i.bin_code.isin(d2)].copy()
+inv=i[i.bin_code.isin(d2)&i.category_name.notna()].copy()
+# keep only stock the WMS download also shows in a Good bin (drops consumables, promo/marketing and unlisted items)
+if os.environ.get('RESLOT_WMS'):
+    w=pd.read_csv(os.environ['RESLOT_WMS'],low_memory=False); w.columns=[c.strip().replace('\ufeff','') for c in w.columns]
+    good=set(zip(w[w.binType=='Good'].bin,w[w.binType=='Good'].skuCode))
+    keep=[k in good for k in zip(inv.bin_code,inv.sku_id)]
+    print('rows dropped (not in WMS Good bins):',len(inv)-sum(keep)); inv=inv[keep].copy()
 inv['label']=inv.bin_code.map(bd.set_index('binCode').label)
 # SKU master: real volume per unit, category, current bins
 sk=(inv.groupby(['sku_id','product_name','category_name']).agg(
