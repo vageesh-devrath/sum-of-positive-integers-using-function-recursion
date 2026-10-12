@@ -1,0 +1,322 @@
+Hi Ashwath S,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Ashwath S
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-Kannamangala* – 1,455 units pending >24h (30 returns)
+_Pick pending: 21 returns / 1,074 units_
+• 09-Oct: REBLR014S1694 (340), REBLR014S1692 (89), REBLR014S1685 (64), REBLR014S1693 (57), REBLR014S1696 (51), REBLR014S1691 (43), REBLR014S1690 (36), REBLR014S1695 (22), REBLR014S1697 (17), REBLR014S1686 (17), REBLR014S1698 (6)
+• 10-Oct: REBLR014S1707 (47), REBLR014S1706 (46), REBLR014S1708 (40), REBLR014S1709 (38), REBLR014S1700 (30), REBLR014S1699 (28), REBLR014S1701 (25)
+• 11-Oct: REBLR014S1715 (34), REBLR014S1712 (22), REBLR014S1713 (22)
+_Dispatch pending (packed, not shipped): 9 returns / 381 units_
+• 10-Oct: REBLR014S1710 (112), REBLR014S1704 (72), REBLR014S1702 (39), REBLR014S1703 (36)
+• 11-Oct: REBLR014S1719 (33), REBLR014S1721 (28), REBLR014S1725 (24), REBLR014S1718 (22), REBLR014S1716 (15)
+
+*2. BLR-Budigere Cross* – 1,154 units pending >24h (27 returns)
+_Pick pending: 26 returns / 1,128 units_
+• 10-Oct: REBLR027S1179 (182), REBLR027S1177 (73), REBLR027S1185 (72), REBLR027S1178 (68), REBLR027S1183 (68), REBLR027S1173 (53), REBLR027S1184 (50), REBLR027S1176 (39), REBLR027S1172 (37), REBLR027S1174 (35), REBLR027S1186 (29), REBLR027S1182 (28), REBLR027S1180 (23), REBLR027S1181 (18)
+• 11-Oct: REBLR027S1196 (61), REBLR027S1191 (59), REBLR027S1190 (36), REBLR027S1187 (33), REBLR027S1194 (26), REBLR027S1197 (26), REBLR027S1198 (22), REBLR027S1189 (22), REBLR027S1195 (22), REBLR027S1192 (22), REBLR027S1193 (13), REBLR027S1188 (11)
+_Dispatch pending (packed, not shipped): 1 returns / 26 units_
+• 10-Oct: REBLR027S1175 (26)
+
+*3. BLR-Sattava East* – 1,083 units pending >24h (33 returns)
+_Pick pending: 30 returns / 1,080 units_
+• 10-Oct: REBLR137S543 (130), REBLR137S542 (113), REBLR137S534 (51), REBLR137S541 (50), REBLR137S545 (49), REBLR137S539 (44), REBLR137S540 (43), REBLR137S547 (42), REBLR137S546 (29), REBLR137S544 (27)
+• 11-Oct: REBLR137S553 (95), REBLR137S562 (62), REBLR137S550 (45), REBLR137S558 (45), REBLR137S557 (32), REBLR137S563 (27), REBLR137S560 (27), REBLR137S548 (25), REBLR137S559 (24), REBLR137S549 (22), REBLR137S554 (22), REBLR137S561 (22), REBLR137S551 (22), REBLR137S556 (21), REBLR137S565 (4), RSOBLR137S020 (2), RSOBLR137S022 (2), RSOBLR137S019 (1), RSOBLR137S021 (1), REBLR137S564 (1)
+_Dispatch pending (packed, not shipped): 3 returns / 3 units_
+• 10-Oct: RSOBLR137S018 (1), RSOBLR137S017 (1), RSOBLR137S016 (1)
+
+*4. BLR-Soukya* – 723 units pending >24h (15 returns)
+_Pick pending: 6 returns / 319 units_
+• 11-Oct: REBLR348S037 (144), REBLR348S035 (49), REBLR348S042 (48), REBLR348S044 (38), REBLR348S038 (28), REBLR348S040 (12)
+_Dispatch pending (packed, not shipped): 9 returns / 404 units_
+• 11-Oct: REBLR348S036 (76), REBLR348S043 (72), REBLR348S034 (71), REBLR348S041 (66), REBLR348S033 (62), REBLR348S032 (28), REBLR348S045 (15), REBLR348S046 (11), REBLR348S047 (3)
+
+*5. BLR-Bellandur-3* – 676 units pending >24h (25 returns)
+_Pick pending: 3 returns / 48 units_
+• 10-Oct: REBLR090S837 (38)
+• 11-Oct: REBLR090S856 (5), REBLR090S857 (5)
+_Dispatch pending (packed, not shipped): 22 returns / 628 units_
+• 10-Oct: REBLR090S829 (47), REBLR090S828 (43), REBLR090S830 (39), REBLR090S835 (34), REBLR090S834 (27), REBLR090S832 (19), REBLR090S836 (16)
+• 11-Oct: REBLR090S848 (52), REBLR090S854 (49), REBLR090S843 (45), REBLR090S851 (33), REBLR090S855 (29), REBLR090S846 (26), REBLR090S844 (25), REBLR090S852 (24), REBLR090S841 (23), REBLR090S845 (22), REBLR090S842 (22), REBLR090S847 (20), REBLR090S849 (11), REBLR090S853 (11), REBLR090S850 (11)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Manjunatha V,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Raghavendra Vernekar
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-JP Nagar New* – 2,372 units pending >24h (32 returns)
+_Pick pending: 25 returns / 1,810 units_
+• 07-Oct: REBLR265S250 (495), REBLR265S254 (10), RSOBLR265S005 (2), RSOBLR265S004 (1)
+• 09-Oct: REBLR265S267 (165), REBLR265S263 (144), REBLR265S264 (136), REBLR265S268 (136), REBLR265S265 (62), REBLR265S256 (55), REBLR265S259 (45), REBLR265S257 (41), REBLR265S262 (32)
+• 10-Oct: REBLR265S274 (89), REBLR265S276 (50), REBLR265S273 (40), REBLR265S271 (40), REBLR265S270 (31)
+• 11-Oct: REBLR265S298 (69), REBLR265S289 (43), REBLR265S290 (41), REBLR265S287 (40), REBLR265S291 (39), REBLR265S300 (3), REBLR265S299 (1)
+_Dispatch pending (packed, not shipped): 7 returns / 562 units_
+• 07-Oct: REBLR265S253 (212), REBLR265S251 (170), REBLR265S249 (82), REBLR265S247 (10), REBLR265S252 (1)
+• 11-Oct: REBLR265S294 (52), REBLR265S296 (35)
+
+*2. BLR-Bannerghatta Network 2* – 1,216 units pending >24h (28 returns)
+_Pick pending: 24 returns / 1,060 units_
+• 10-Oct: REBLR061S1060 (121), REBLR061S1064 (121), REBLR061S1065 (109), REBLR061S1062 (73), REBLR061S1072 (69), REBLR061S1068 (56), REBLR061S1066 (41), REBLR061S1067 (29)
+• 11-Oct: REBLR061S1085 (62), REBLR061S1075 (46), REBLR061S1082 (45), REBLR061S1081 (44), REBLR061S1083 (40), REBLR061S1080 (39), REBLR061S1077 (29), REBLR061S1078 (29), REBLR061S1074 (24), REBLR061S1084 (24), REBLR061S1079 (22), REBLR061S1087 (13), REBLR061S1076 (11), REBLR061S1086 (11), REBLR061S1088 (1), REBLR061S1089 (1)
+_Dispatch pending (packed, not shipped): 4 returns / 156 units_
+• 10-Oct: REBLR061S1061 (64), REBLR061S1070 (51), REBLR061S1063 (12)
+• 11-Oct: REBLR061S1073 (29)
+
+*3. BLR-BANNERGHATTA* – 930 units pending >24h (19 returns)
+_Pick pending: 19 returns / 930 units_
+• 10-Oct: REBLR056S1741 (124), REBLR056S1740 (105), REBLR056S1745 (84), REBLR056S1743 (71), REBLR056S1739 (69), REBLR056S1744 (44), REBLR056S1742 (20), RSOBLR056S019 (2)
+• 11-Oct: REBLR056S1753 (59), REBLR056S1757 (54), REBLR056S1758 (50), REBLR056S1755 (47), REBLR056S1759 (39), REBLR056S1751 (36), REBLR056S1760 (36), REBLR056S1752 (35), REBLR056S1756 (30), REBLR056S1754 (24), RSOBLR056S020 (1)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Saddam Hussain,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Lakshman Balakrishnan
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-HSR-2* – 2,052 units pending >24h (46 returns)
+_Pick pending: 36 returns / 1,730 units_
+• 09-Oct: REBLR082S821 (207), REBLR082S829 (175), REBLR082S820 (144), REBLR082S823 (101), REBLR082S824 (55), REBLR082S822 (43), REBLR082S828 (35), REBLR082S825 (33), REBLR082S827 (22), REBLR082S826 (12)
+• 10-Oct: REBLR082S834 (137), REBLR082S835 (74), REBLR082S837 (65), REBLR082S832 (43), REBLR082S839 (40), REBLR082S840 (37), REBLR082S833 (36), REBLR082S831 (35), REBLR082S836 (33)
+• 11-Oct: REBLR082S858 (54), REBLR082S851 (50), REBLR082S847 (32), REBLR082S852 (28), REBLR082S854 (25), REBLR082S848 (24), REBLR082S846 (23), REBLR082S850 (22), REBLR082S853 (22), REBLR082S859 (22), REBLR082S856 (22), REBLR082S860 (22), REBLR082S857 (22), REBLR082S855 (22), REBLR082S849 (11), REBLR082S862 (1), REBLR082S861 (1)
+_Dispatch pending (packed, not shipped): 10 returns / 322 units_
+• 09-Oct: REBLR082S818 (35), REBLR082S816 (34), REBLR082S817 (19), REBLR082S819 (14)
+• 10-Oct: REBLR082S845 (60), REBLR082S841 (45), REBLR082S842 (44), REBLR082S844 (32), REBLR082S843 (27), REBLR082S838 (12)
+
+*2. BLR-Sarjapur-2* – 913 units pending >24h (29 returns)
+_Pick pending: 5 returns / 299 units_
+• 10-Oct: REBLR079S1166 (71), REBLR079S1176 (68), REBLR079S1168 (65), REBLR079S1180 (30)
+• 11-Oct: REBLR079S1190 (65)
+_Dispatch pending (packed, not shipped): 24 returns / 614 units_
+• 10-Oct: REBLR079S1169 (45), REBLR079S1170 (42), REBLR079S1173 (39), REBLR079S1171 (36), REBLR079S1177 (33), REBLR079S1178 (30), REBLR079S1167 (29), REBLR079S1172 (26), REBLR079S1175 (21), REBLR079S1179 (20), REBLR079S1174 (13)
+• 11-Oct: REBLR079S1192 (38), REBLR079S1184 (37), REBLR079S1194 (25), REBLR079S1189 (25), REBLR079S1181 (23), REBLR079S1183 (23), REBLR079S1182 (22), REBLR079S1186 (20), REBLR079S1191 (19), REBLR079S1187 (15), REBLR079S1185 (11), REBLR079S1188 (11), REBLR079S1193 (11)
+
+*3. BLR-HSR Layout New* – 798 units pending >24h (27 returns)
+_Pick pending: 27 returns / 798 units_
+• 09-Oct: REBLR094S1026 (61), REBLR094S1022 (35), REBLR094S1025 (24), REBLR094S1021 (19), REBLR094S1020 (18), REBLR094S1023 (17), REBLR094S1024 (13)
+• 10-Oct: REBLR094S1031 (54), REBLR094S1027 (52), REBLR094S1035 (45), REBLR094S1034 (44), REBLR094S1030 (31), REBLR094S1029 (21), REBLR094S1028 (17), REBLR094S1033 (13), REBLR094S1032 (11)
+• 11-Oct: REBLR094S1044 (65), REBLR094S1048 (37), REBLR094S1046 (31), REBLR094S1047 (31), REBLR094S1045 (30), REBLR094S1042 (28), REBLR094S1050 (27), REBLR094S1043 (27), REBLR094S1051 (23), REBLR094S1049 (22), REBLR094S1052 (2)
+
+*4. BLR-HSR-3* – 516 units pending >24h (30 returns)
+_Pick pending: 30 returns / 516 units_
+• 09-Oct: REBLR080S1313 (13), REBLR080S1316 (12), REBLR080S1322 (6), REBLR080S1324 (3), REBLR080S1312 (2), REBLR080S1309 (1), REBLR080S1323 (1)
+• 10-Oct: REBLR080S1332 (26), REBLR080S1333 (13), REBLR080S1328 (12), REBLR080S1329 (11), REBLR080S1325 (11), REBLR080S1327 (11), REBLR080S1326 (11), REBLR080S1330 (3)
+• 11-Oct: REBLR080S1342 (71), REBLR080S1343 (48), REBLR080S1335 (30), REBLR080S1341 (26), REBLR080S1340 (25), REBLR080S1344 (24), REBLR080S1348 (23), REBLR080S1339 (22), REBLR080S1336 (22), REBLR080S1345 (22), REBLR080S1347 (22), REBLR080S1346 (12), REBLR080S1337 (11), REBLR080S1349 (11), REBLR080S1338 (11)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Sundaresh S,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Lakshman Balakrishnan
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-Marathahalli-3* – 1,952 units pending >24h (34 returns)
+_Pick pending: 30 returns / 1,814 units_
+• 09-Oct: REBLR103S755 (288), REBLR103S751 (47), REBLR103S760 (31), RSOBLR103S016 (1)
+• 10-Oct: REBLR103S779 (128), REBLR103S768 (116), REBLR103S771 (113), REBLR103S774 (101), REBLR103S770 (96), REBLR103S777 (72), REBLR103S775 (62), REBLR103S776 (31), REBLR103S767 (26), REBLR103S766 (26)
+• 11-Oct: REBLR103S785 (151), REBLR103S792 (67), REBLR103S789 (55), REBLR103S794 (54), REBLR103S786 (46), REBLR103S782 (43), REBLR103S784 (39), REBLR103S783 (37), REBLR103S793 (37), REBLR103S788 (35), REBLR103S791 (31), REBLR103S787 (25), REBLR103S795 (24), REBLR103S790 (23), REBLR103S797 (5), REBLR103S796 (4)
+_Dispatch pending (packed, not shipped): 4 returns / 138 units_
+• 09-Oct: REBLR103S754 (62)
+• 10-Oct: REBLR103S778 (41), REBLR103S773 (23), REBLR103S780 (12)
+
+*2. BLR-Doddakannelli* – 693 units pending >24h (25 returns)
+_Pick pending: 25 returns / 693 units_
+• 09-Oct: REBLR081S990 (140), REBLR081S989 (92), REBLR081S993 (69), REBLR081S992 (20), REBLR081S995 (17), RSOBLR081S003 (2), RSOBLR081S004 (2)
+• 10-Oct: REBLR081S1004 (35), REBLR081S1007 (14), REBLR081S1006 (11)
+• 11-Oct: REBLR081S1013 (33), REBLR081S1026 (24), REBLR081S1012 (24), REBLR081S1017 (23), REBLR081S1015 (22), REBLR081S1021 (22), REBLR081S1024 (22), REBLR081S1020 (22), REBLR081S1014 (22), REBLR081S1023 (22), REBLR081S1018 (11), REBLR081S1019 (11), REBLR081S1022 (11), REBLR081S1016 (11), REBLR081S1025 (11)
+
+*3. BLR-GUNJUR Network* – 648 units pending >24h (21 returns)
+_Pick pending: 5 returns / 120 units_
+• 10-Oct: RSOBLR017S005 (1)
+• 11-Oct: REBLR017S1549 (36), REBLR017S1550 (30), REBLR017S1548 (28), REBLR017S1551 (25)
+_Dispatch pending (packed, not shipped): 16 returns / 528 units_
+• 10-Oct: REBLR017S1544 (66), REBLR017S1533 (63), REBLR017S1545 (59), REBLR017S1546 (43), REBLR017S1538 (33), REBLR017S1540 (31)
+• 11-Oct: REBLR017S1559 (46), REBLR017S1556 (44), REBLR017S1561 (28), REBLR017S1558 (25), REBLR017S1563 (24), REBLR017S1562 (23), REBLR017S1554 (20), REBLR017S1555 (20), REBLR017S1560 (2), REBLR017S1557 (1)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Vijay M,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Raghavendra Vernekar
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-SHIVAJI NAGAR Network* – 1,000 units pending >24h (31 returns)
+_Pick pending: 13 returns / 653 units_
+• 09-Oct: REBLR107S726 (174), REBLR107S723 (157), REBLR107S719 (68), REBLR107S716 (50), REBLR107S725 (49), REBLR107S718 (24), RSOBLR107S012 (3), RSOBLR107S013 (1)
+• 10-Oct: REBLR107S742 (33), REBLR107S743 (27)
+• 11-Oct: REBLR107S746 (23), REBLR107S751 (22), REBLR107S749 (22)
+_Dispatch pending (packed, not shipped): 18 returns / 347 units_
+• 09-Oct: REBLR107S730 (45), REBLR107S724 (38), REBLR107S722 (1)
+• 10-Oct: REBLR107S732 (30), REBLR107S739 (22), REBLR107S736 (17), REBLR107S740 (12), REBLR107S744 (10), REBLR107S738 (1)
+• 11-Oct: REBLR107S754 (31), REBLR107S745 (24), REBLR107S747 (24), REBLR107S748 (22), REBLR107S757 (22), REBLR107S755 (22), REBLR107S756 (14), REBLR107S752 (11), REBLR107S753 (1)
+
+*2. BLR-Richmond Town Network* – 847 units pending >24h (28 returns)
+_Pick pending: 16 returns / 482 units_
+• 09-Oct: RSOBLR296S007 (1)
+• 11-Oct: REBLR296S295 (79), REBLR296S304 (60), REBLR296S294 (39), REBLR296S290 (33), REBLR296S300 (32), REBLR296S291 (30), REBLR296S303 (30), REBLR296S293 (29), REBLR296S298 (26), REBLR296S301 (25), REBLR296S292 (22), REBLR296S296 (22), REBLR296S297 (22), REBLR296S299 (21), REBLR296S302 (11)
+_Dispatch pending (packed, not shipped): 12 returns / 365 units_
+• 07-Oct: RSOBLR296S006 (2)
+• 09-Oct: REBLR296S274 (54), REBLR296S270 (54), REBLR296S271 (43), REBLR296S265 (29)
+• 10-Oct: REBLR296S281 (49), REBLR296S283 (30), REBLR296S282 (29), REBLR296S284 (25), REBLR296S279 (25), REBLR296S278 (13), REBLR296S280 (12)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Girish N,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Ashwath S
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-HEBBAL NEW* – 1,103 units pending >24h (31 returns)
+_Pick pending: 31 returns / 1,103 units_
+• 09-Oct: REBLR033S1058 (121), REBLR033S1057 (97), REBLR033S1059 (91), REBLR033S1060 (66), RSOBLR033S008 (1)
+• 10-Oct: REBLR033S1074 (70), REBLR033S1065 (47), REBLR033S1063 (45), REBLR033S1072 (32), REBLR033S1067 (28), REBLR033S1062 (26), REBLR033S1073 (23), REBLR033S1064 (17), REBLR033S1066 (14), REBLR033S1068 (13), REBLR033S1070 (12), REBLR033S1071 (12), REBLR033S1075 (11), REBLR033S1069 (11)
+• 11-Oct: REBLR033S1080 (51), REBLR033S1081 (47), REBLR033S1083 (39), REBLR033S1076 (33), REBLR033S1078 (28), REBLR033S1086 (27), REBLR033S1084 (25), REBLR033S1079 (24), REBLR033S1082 (24), REBLR033S1087 (24), REBLR033S1077 (22), REBLR033S1085 (22)
+
+*2. BLR-Jakkur Network* – 608 units pending >24h (24 returns)
+_Pick pending: 19 returns / 598 units_
+• 10-Oct: REBLR058S775 (109), REBLR058S772 (33), REBLR058S762 (26), REBLR058S756 (21), RSOBLR058S012 (1)
+• 11-Oct: REBLR058S787 (85), REBLR058S782 (54), REBLR058S792 (36), REBLR058S781 (34), REBLR058S778 (29), REBLR058S790 (26), REBLR058S791 (23), REBLR058S794 (22), REBLR058S784 (22), REBLR058S786 (22), REBLR058S793 (22), REBLR058S788 (21), REBLR058S789 (11), RSOBLR058S013 (1)
+_Dispatch pending (packed, not shipped): 5 returns / 10 units_
+• 10-Oct: REBLR058S771 (4), REBLR058S777 (2), REBLR058S774 (2), REBLR058S759 (1)
+• 11-Oct: REBLR058S779 (1)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Narasimhamurthy R,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Deepak D M
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-VIJAY NAGAR* – 676 units pending >24h (22 returns)
+_Pick pending: 2 returns / 107 units_
+• 10-Oct: REBLR031S1494 (79)
+• 11-Oct: REBLR031S1506 (28)
+_Dispatch pending (packed, not shipped): 20 returns / 569 units_
+• 10-Oct: REBLR031S1492 (121), REBLR031S1498 (53), REBLR031S1489 (31), REBLR031S1493 (28), REBLR031S1499 (26), REBLR031S1500 (26), REBLR031S1491 (25), REBLR031S1495 (15), REBLR031S1496 (12), REBLR031S1497 (12), REBLR031S1490 (11)
+• 11-Oct: REBLR031S1507 (51), REBLR031S1504 (37), REBLR031S1503 (36), REBLR031S1502 (25), REBLR031S1505 (24), REBLR031S1501 (22), REBLR031S1516 (8), REBLR031S1517 (5), RSOBLR031S010 (1)
+
+*2. BLR-Vijay Nagar Network* – 421 units pending >24h (13 returns)
+_Pick pending: 1 returns / 54 units_
+• 10-Oct: REBLR060S1417 (54)
+_Dispatch pending (packed, not shipped): 12 returns / 367 units_
+• 07-Oct: RSOBLR060S013 (1)
+• 09-Oct: REBLR060S1403 (20)
+• 10-Oct: REBLR060S1421 (43), REBLR060S1419 (41), REBLR060S1418 (35)
+• 11-Oct: REBLR060S1437 (57), REBLR060S1431 (44), REBLR060S1432 (39), REBLR060S1433 (34), REBLR060S1430 (29), REBLR060S1435 (13), REBLR060S1434 (11)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Adhavan Subramani,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Ashwath S
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-Narayanapura* – 1,011 units pending >24h (23 returns)
+_Pick pending: 19 returns / 936 units_
+• 07-Oct: REBLR026S1661 (51), RSOBLR026S018 (4), RSOBLR026S019 (1)
+• 09-Oct: REBLR026S1668 (149), REBLR026S1671 (142), REBLR026S1672 (94), REBLR026S1675 (69), REBLR026S1674 (53)
+• 10-Oct: REBLR026S1683 (70), REBLR026S1677 (66), REBLR026S1682 (38), REBLR026S1678 (34), REBLR026S1680 (28), REBLR026S1684 (14), REBLR026S1681 (12), REBLR026S1679 (12)
+• 11-Oct: REBLR026S1687 (49), REBLR026S1686 (28), REBLR026S1695 (22)
+_Dispatch pending (packed, not shipped): 4 returns / 75 units_
+• 11-Oct: REBLR026S1698 (30), REBLR026S1688 (23), REBLR026S1693 (11), REBLR026S1689 (11)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Silambarasan E,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Lakshman Balakrishnan
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-Brookfield Network-2* – 519 units pending >24h (16 returns)
+_Pick pending: 16 returns / 519 units_
+• 10-Oct: REBLR129S522 (77), REBLR129S516 (73), REBLR129S519 (54), REBLR129S526 (51), REBLR129S521 (46), REBLR129S515 (42), REBLR129S525 (41), REBLR129S518 (32), REBLR129S527 (30), REBLR129S523 (13), REBLR129S517 (12), REBLR129S520 (12), REBLR129S524 (11)
+• 11-Oct: REBLR129S544 (22), REBLR129S546 (2), REBLR129S545 (1)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Rizwan Ahmed,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Lakshman Balakrishnan
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-RAMAMURTHY NAGAR NEW* – 489 units pending >24h (10 returns)
+_Pick pending: 10 returns / 489 units_
+• 09-Oct: REBLR075S930 (187), REBLR075S931 (60)
+• 11-Oct: REBLR075S963 (46), REBLR075S961 (46), REBLR075S959 (33), REBLR075S964 (31), REBLR075S958 (28), REBLR075S957 (24), REBLR075S962 (23), REBLR075S960 (11)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Richard Harris,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Ashwath S
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-Basavanapura Network* – 421 units pending >24h (20 returns)
+_Dispatch pending (packed, not shipped): 20 returns / 421 units_
+• 09-Oct: REBLR063S792 (55), REBLR063S789 (53), REBLR063S787 (51), REBLR063S788 (47), REBLR063S791 (19), REBLR063S790 (11)
+• 11-Oct: REBLR063S811 (25), REBLR063S810 (25), REBLR063S807 (22), REBLR063S808 (21), REBLR063S806 (18), REBLR063S802 (12), REBLR063S813 (11), REBLR063S803 (11), REBLR063S801 (11), REBLR063S805 (10), REBLR063S804 (10), REBLR063S809 (6), REBLR063S814 (2), REBLR063S815 (1)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Raghavendra Vernekar,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Raghavendra Vernekar
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-BTM Layout Network-3* – 358 units pending >24h (9 returns)
+_Pick pending: 9 returns / 358 units_
+• 09-Oct: REBLR117S560 (115), REBLR117S561 (75), REBLR117S565 (60)
+• 11-Oct: REBLR117S581 (34), REBLR117S577 (26), REBLR117S576 (22), REBLR117S582 (22), REBLR117S591 (3), REBLR117S592 (1)
+
+Please confirm once picked & dispatched.
+
+------------------------------
+
+Hi Mohaideen DH,
+
+*SOS P0 stores – pick & dispatch pending (as of 12-Oct)*
+Leader: Ashwath S
+Plans older than 24h are pending below. Please clear these today so the next recirculation plan can be generated.
+
+*1. BLR-BHADRAPPA LAYOUT NETWORK* – 105 units pending >24h (2 returns)
+_Pick pending: 2 returns / 105 units_
+• 01-Oct: REBLR028S981 (71), REBLR028S976 (34)
+
+Please confirm once picked & dispatched.
