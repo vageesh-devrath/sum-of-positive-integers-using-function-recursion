@@ -730,6 +730,8 @@ FROM (
         ON t.store_name = c.store_name AND LOWER(c.sku) = t.sku_id AND t.t_dt = dd.dt
       WHERE
         (c.txn_closed_on IS NULL OR CAST(c.txn_closed_on AS DATE) >= dd.dt)
+        AND c.inb_use_date >= DATE'2026-09-16'
+        AND c.inb_use_date < DATE'2026-09-27'
     ) AS `virtual_table`
     GROUP BY ALL
     UNION ALL
@@ -846,6 +848,8 @@ FROM (
         ON t.store_name = c.store_name AND LOWER(c.sku) = t.sku_id AND t.t_dt = dd.dt
       WHERE
         (c.txn_closed_on IS NULL OR CAST(c.txn_closed_on AS DATE) >= dd.dt)
+        AND c.to_creation_date >= DATE'2026-09-01'
+        AND c.to_creation_date < DATE'2026-09-27'
     ) AS `virtual_table`
     GROUP BY ALL
   ) AS a
